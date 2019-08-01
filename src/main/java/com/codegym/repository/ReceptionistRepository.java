@@ -1,5 +1,7 @@
 package com.codegym.repository;
 
+import com.codegym.model.Receptionist;
+
 import java.util.List;
 
 public interface ReceptionistRepository<T> {
@@ -12,4 +14,6 @@ public interface ReceptionistRepository<T> {
     void update(int id, T t);
 
     void remove(int id);
+
+    List<T> search(String word);
 }

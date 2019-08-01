@@ -14,4 +14,6 @@ public interface ReceptionistService <Receptionist>{
     void update(int id, Receptionist receptionist);
 
     void remove(int id);
+
+    List<Receptionist> search(String word);
 }

@@ -94,12 +94,7 @@ public class ReceptionistController {
 
     @GetMapping("/search")
     public ModelAndView findName(@RequestParam("word") String word){
-        List<Receptionist> filteredList = new ArrayList<>();
-        for (Receptionist receptionist: receptionistService.findAll()){
-            if(receptionist.getName().toLowerCase().contains(word.trim().toLowerCase())){
-                filteredList.add(receptionist);
-            }
-        }
+        List<Receptionist> filteredList = receptionistService.search(word);
         ModelAndView modelAndView = new ModelAndView("/receptionist/list");
         modelAndView.addObject("receptionistList",filteredList);
         return modelAndView;

@@ -44,4 +44,15 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository<Recept
     public void remove(int id) {
         receptionistList.remove(id);
     }
+
+    @Override
+    public List<Receptionist> search(String word){
+        List<Receptionist> filteredList = new ArrayList<>();
+        for (Receptionist receptionist: this.findAll()){
+            if(receptionist.getName().toLowerCase().contains(word.trim().toLowerCase())){
+                filteredList.add(receptionist);
+            }
+        }
+        return filteredList;
+    }
 }

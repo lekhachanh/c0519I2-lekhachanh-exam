@@ -28,9 +28,13 @@ public class ReceptionistServiceImpl implements ReceptionistService <Receptionis
     public void update(int id, Receptionist receptionist) {
         receptionistRepository.update(id, receptionist);
     }
-
     @Override
     public void remove(int id) {
         receptionistRepository.remove(id);
+    }
+
+    @Override
+    public List<Receptionist> search(String word){
+        return receptionistRepository.search(word);
     }
 }
