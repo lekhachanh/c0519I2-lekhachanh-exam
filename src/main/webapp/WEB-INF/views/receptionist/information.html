@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${receptionist.getName()}"></title>
+</head>
+<body>
+<h3>Information receptionist</h3>
+<p>
+    <a th:href="@{/receptionist/list}">
+        Back to receptionist list
+    </a>
+</p>
+<div>
+    <label>Name:</label>
+    <label th:text="${receptionist.getName()}"></label>
+</div>
+<div>
+    <label>Age:</label>
+    <label th:text="${receptionist.getAge()}"></label>
+</div>
+<div>
+    <label>Address:</label>
+    <label th:text="${receptionist.getAddress()}"></label>
+</div>
+<div>
+    <label>Hobby:</label>
+    <label th:text="${receptionist.getHobby()()}"></label>
+</div>
+<div>
+    <label>Avatar:</label>
+    <label></label>
+</div>
+</body>
+</html>

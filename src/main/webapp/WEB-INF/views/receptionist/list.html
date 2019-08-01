@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Receptionist List</title>
+</head>
+<body>
+<h2>Receptionist List</h2>
+<form action="/receptionist/search" method="get" >
+    <input type="text" name="word">
+    <input type="submit" value="Search">
+</form>
+<p>
+    <a href="/receptionist/create">Create receptionist</a>
+</p>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Hobby</th>
+        <th>Avatar</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Information</th>
+
+    </tr>
+    <tr th:each="row,rowStar : ${receptionistList}">
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getAge()}"></td>
+        <td th:text="${row.getAddress()}"></td>
+        <td th:text="${row.getHobby()}"></td>
+        <td></td>
+        <td><a th:href="@{/receptionist/edit/__${row.getId()}__}">Edit</a></td>
+        <td><a th:href="@{/receptionist/delete/__${row.getId()}__}">Delete</a></td>
+        <td><a th:href="@{/receptionist/information/__${row.getId()}__}">Information</a></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Add Receptionist</h3>
+<p>
+    <a href="/receptionist/list">Back to reception list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/receptionist/save}" th:object="${receptionist}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div>
+        <label>Name:</label>
+        <input type="text" th:field="*{name}">
+    </div>
+    <div>
+        <label>Age:</label>
+        <input type="text" th:field="*{age}">
+    </div>
+    <div>
+        <label>Address:</label>
+        <input type="text" th:field="*{address}">
+    </div>
+    <div>
+        <label>Hobby:</label>
+        <input type="text" th:field="*{hobby}">
+    </div>
+    <div>
+        <label>Avatar:</label>
+    </div>
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>
