@@ -50,6 +50,7 @@ public class ReceptionistController {
             ex.printStackTrace();
         }
         Receptionist receptionist = new Receptionist(receptionistForm.getId(), receptionistForm.getName(), receptionistForm.getAge(), receptionistForm.getAddress(), receptionistForm.getHobby(), fileName);
+        receptionist.setId((int)(Math.random()*100000));
         receptionistService.save(receptionist);
         ModelAndView modelAndView = new ModelAndView("/receptionist/create");
         modelAndView.addObject("message", "Created new receptionist succesfully!");
