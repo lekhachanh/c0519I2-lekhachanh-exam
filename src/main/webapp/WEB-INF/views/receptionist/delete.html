@@ -11,7 +11,7 @@
     <a href="/receptionist/list">Back to receptionist List</a>
 </p>
 
-<form th:action="@{/receptionist/remove}" th:object="${receptionist}" method="post">
+<form th:action="@{/receptionist/remove}" th:object="${receptionist}" method="post" enctype="multipart/form-data">
     <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
@@ -31,8 +31,8 @@
             <td th:text="${receptionist.hobby}"></td>
         </tr>
         <tr>
-            <td>Avatar:</td>
-            <td></td>
+            <td>Avatar</td>
+            <td><img width="150px" height="200px" th:src="@{'/image/' + ${receptionist.avatar}}"></td>
         </tr>
         <tr>
             <td></td>

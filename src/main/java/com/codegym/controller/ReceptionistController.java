@@ -1,12 +1,18 @@
 package com.codegym.controller;
 
 import com.codegym.model.Receptionist;
+import com.codegym.model.ReceptionistForm;
 import com.codegym.service.ReceptionistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -14,6 +20,9 @@ import java.util.List;
 public class ReceptionistController {
     @Autowired
     private ReceptionistService<Receptionist> receptionistService;
+
+    @Autowired
+    Environment env;
 
     @GetMapping("/list")
     public ModelAndView findAll() {
@@ -26,17 +35,25 @@ public class ReceptionistController {
     @GetMapping("/create")
     public ModelAndView showCreateForm() {
         ModelAndView modelAndView = new ModelAndView("/receptionist/create");
-        modelAndView.addObject("receptionist", new Receptionist());
+        modelAndView.addObject("receptionistForm", new ReceptionistForm());
         return modelAndView;
     }
 
     @PostMapping("/save")
-    public ModelAndView saveReceptionist(@ModelAttribute("receptionist") Receptionist receptionist) {
-        receptionist.setId((int)(Math.random() * 10000));
+    public ModelAndView saveReceptionist(ReceptionistForm receptionistForm) {
+        MultipartFile multipartFile = receptionistForm.getAvatar();
+        String fileName = multipartFile.getOriginalFilename();
+        String fileUpload = env.getProperty("upload_file".toString());
+        try {
+            FileCopyUtils.copy(receptionistForm.getAvatar().getBytes(), new File(fileUpload + fileName));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Receptionist receptionist = new Receptionist(receptionistForm.getId(), receptionistForm.getName(), receptionistForm.getAge(), receptionistForm.getAddress(), receptionistForm.getHobby(), fileName);
         receptionistService.save(receptionist);
         ModelAndView modelAndView = new ModelAndView("/receptionist/create");
-        modelAndView.addObject("receptionist", new Receptionist());
-        modelAndView.addObject("message", "created!");
+        modelAndView.addObject("message", "Created new receptionist succesfully!");
+        modelAndView.addObject("receptionistForm", new ReceptionistForm());
         return modelAndView;
     }
 
@@ -44,21 +61,35 @@ public class ReceptionistController {
     public ModelAndView showEditForm(@PathVariable Integer id) {
         Receptionist receptionist = receptionistService.findById(id);
         if (receptionist != null) {
+            ReceptionistForm receptionistForm = new ReceptionistForm(receptionist.getId(), receptionist.getName(),
+                    receptionist.getAge(), receptionist.getAddress(), receptionist.getHobby(), null);
             ModelAndView modelAndView = new ModelAndView("/receptionist/edit");
+            modelAndView.addObject("receptionistForm", receptionistForm);
             modelAndView.addObject("receptionist", receptionist);
             return modelAndView;
         } else {
-            ModelAndView modelAndView = new ModelAndView("/error.404");
+            ModelAndView modelAndView = new ModelAndView("/error-404");
             return modelAndView;
         }
     }
 
     @PostMapping("/update")
-    public ModelAndView updateReceptionist(Receptionist receptionist) {
-        ModelAndView modelAndView = new ModelAndView("/receptionist/edit");
+    public ModelAndView updateReceptionist(@ModelAttribute ReceptionistForm receptionistForm) {
+        MultipartFile multipartFile = receptionistForm.getAvatar();
+        String fileName = multipartFile.getOriginalFilename();
+        String fileUpload = env.getProperty("file_upload").toString();
+
+        try {
+            FileCopyUtils.copy(receptionistForm.getAvatar().getBytes(), new File(fileUpload + fileName));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Receptionist receptionist = new Receptionist(receptionistForm.getId(), receptionistForm.getName(),
+                receptionistForm.getAge(), receptionistForm.getAddress(), receptionistForm.getHobby(), fileName);
         receptionistService.update(receptionist.getId(), receptionist);
-        modelAndView.addObject("receptionist", receptionist);
-        modelAndView.addObject("message", "updated!");
+        ModelAndView modelAndView = new ModelAndView("/receptionist/edit");
+        modelAndView.addObject("receptionistForm", receptionistForm);
+        modelAndView.addObject("message", "Updated new receptionist information successfully");
         return modelAndView;
     }
 
@@ -66,11 +97,14 @@ public class ReceptionistController {
     public ModelAndView showDeleteForm(@PathVariable Integer id) {
         Receptionist receptionist = receptionistService.findById(id);
         if (receptionist != null) {
+            ReceptionistForm receptionistForm = new ReceptionistForm(receptionist.getId(), receptionist.getName(),
+                    receptionist.getAge(), receptionist.getAddress(), receptionist.getHobby(), null);
             ModelAndView modelAndView = new ModelAndView("/receptionist/delete");
             modelAndView.addObject("receptionist", receptionist);
+            modelAndView.addObject("receptionistForm", receptionistForm);
             return modelAndView;
         } else {
-            ModelAndView modelAndView = new ModelAndView("/error.404");
+            ModelAndView modelAndView = new ModelAndView("/error-404");
             return modelAndView;
         }
     }
@@ -85,9 +119,18 @@ public class ReceptionistController {
 
     @GetMapping("/information/{id}")
     public ModelAndView infoReceptionist(@PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("/receptionist/information");
-        modelAndView.addObject("receptionist", receptionistService.findById(id));
-        return modelAndView;
+        Receptionist receptionist = receptionistService.findById(id);
+        if (receptionist != null) {
+            ReceptionistForm receptionistForm = new ReceptionistForm(receptionist.getId(), receptionist.getName(),
+                    receptionist.getAge(), receptionist.getAddress(), receptionist.getHobby(), null);
+            ModelAndView modelAndView = new ModelAndView("/receptionist/information");
+            modelAndView.addObject("receptionistForm", receptionistForm);
+            modelAndView.addObject("receptionist", receptionist);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("/error-404");
+            return modelAndView;
+        }
     }
 
     @GetMapping("/search")
@@ -97,5 +140,4 @@ public class ReceptionistController {
         modelAndView.addObject("receptionistList", filteredList);
         return modelAndView;
     }
-
 }

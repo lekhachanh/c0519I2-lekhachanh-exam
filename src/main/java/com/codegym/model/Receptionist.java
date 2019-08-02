@@ -6,16 +6,20 @@ public class Receptionist {
     private int age;
     private String address;
     private String hobby;
+    private String avatar;
+
 
     public Receptionist() {
     }
 
-    public Receptionist(int id, String name, int age, String address, String hobby) {
+    public Receptionist(int id, String name, int age, String address, String hobby, String avatar) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.address = address;
         this.hobby = hobby;
+        this.avatar = avatar;
+
     }
 
     public int getId() {
@@ -58,4 +62,11 @@ public class Receptionist {
         this.hobby = hobby;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }

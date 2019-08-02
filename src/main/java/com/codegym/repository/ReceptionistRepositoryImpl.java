@@ -12,12 +12,12 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository<Recept
 
     static {
         receptionistList = new HashMap<>();
-        receptionistList.put(1, new Receptionist(1, "Phan Văn Đức", 21, "Yên Thành, Nghệ An", "play football"));
-        receptionistList.put(2, new Receptionist(2, "Phan Đình Tùng", 31, "Q3, Tp. Hồ Chí Minh", "sing"));
-        receptionistList.put(3, new Receptionist(3, "Hồ Quang Hiếu", 30, "Quảng Nam", "sing and dance"));
-        receptionistList.put(4, new Receptionist(4, "Mai Phương Thúy", 32, "Cầu Giấy, Hà Nội", "Play volleyball"));
-        receptionistList.put(5, new Receptionist(5, "Lại Văn Sâm", 45, "Khâm Thiên, Hà Nội", "Read book"));
-        receptionistList.put(6, new Receptionist(6, "Leona messi", 36, "Barcelona, spain", "Play volleyball"));
+        receptionistList.put(1, new Receptionist(1, "Phan Văn Đức", 21, "Yên Thành, Nghệ An", "play football", "download.jpeg"));
+        receptionistList.put(2, new Receptionist(2, "Phan Đình Tùng", 31, "Q3, Tp. Hồ Chí Minh", "sing", "ronaldo.jpg"));
+        receptionistList.put(3, new Receptionist(3, "Hồ Quang Hiếu", 30, "Quảng Nam", "sing and dance", "index.jpeg"));
+        receptionistList.put(4, new Receptionist(4, "Mai Phương Thúy", 32, "Cầu Giấy, Hà Nội", "Play volleyball", "mai-phuong-thuy-phu-nhan-sap-ket-hon.jpg"));
+        receptionistList.put(5, new Receptionist(5, "Lại Văn Sâm", 45, "Khâm Thiên, Hà Nội", "Read book", "index2.jpeg"));
+        receptionistList.put(6, new Receptionist(6, "Leona messi", 36, "Barcelona, spain", "Play volleyball", "download.jpeg"));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository<Recept
     public List<Receptionist> search(String word) {
         List<Receptionist> filteredList = new ArrayList<>();
         for (Receptionist receptionist : this.findAll()) {
-            if (receptionist.getName().toLowerCase().contains(word.trim().toLowerCase())) {
+            if (receptionist.getName().toLowerCase().contains(word.trim())) {
                 filteredList.add(receptionist);
             }
         }

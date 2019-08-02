@@ -23,11 +23,11 @@
 </div>
 <div>
     <label>Hobby:</label>
-    <label th:text="${receptionist.getHobby()()}"></label>
+    <label th:text="${receptionist.getHobby()}"></label>
 </div>
 <div>
     <label>Avatar:</label>
-    <label></label>
+    <img width="150px" height="200px" th:src="@{'/image/' + ${receptionist.avatar}}">
 </div>
 </body>
 </html>

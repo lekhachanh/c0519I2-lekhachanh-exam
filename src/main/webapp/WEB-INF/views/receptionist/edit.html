@@ -16,7 +16,7 @@
 </th:block>
 <div id="form">
     <form th:action="@{/receptionist/update}" th:object="${receptionist}"
-          method="POST">
+          enctype="multipart/form-data" method="POST">
         <input type="hidden" th:field="*{id}"/>
         <div>
             <label>Name</label>
@@ -36,6 +36,7 @@
         </div>
         <div>
             <label>Image</label>
+            <input type="file" th:field="*{avatar}">
 
         </div>
         <input type="submit" value="Modify"/>

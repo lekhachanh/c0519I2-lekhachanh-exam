@@ -30,7 +30,7 @@
         <td th:text="${row.getAge()}"></td>
         <td th:text="${row.getAddress()}"></td>
         <td th:text="${row.getHobby()}"></td>
-        <td></td>
+        <td><img width="50px" height="80px" th:src="@{'/image/' + ${row.avatar}}"></td>
         <td><a th:href="@{/receptionist/edit/__${row.getId()}__}">Edit</a></td>
         <td><a th:href="@{/receptionist/delete/__${row.getId()}__}">Delete</a></td>
         <td><a th:href="@{/receptionist/information/__${row.getId()}__}">Information</a></td>

@@ -12,7 +12,7 @@
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
 </th:block>
-<form th:action="@{/receptionist/save}" th:object="${receptionist}" method="post">
+<form th:action="@{/receptionist/save}" th:object="${receptionistForm}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{id}">
     <div>
         <label>Name:</label>
@@ -32,6 +32,7 @@
     </div>
     <div>
         <label>Avatar:</label>
+        <td><input type="file" th:field="*{avatar}"></td>
     </div>
     <input type="submit" value="Save"/>
 </form>
