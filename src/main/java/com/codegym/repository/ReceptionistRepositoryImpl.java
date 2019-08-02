@@ -27,7 +27,7 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository<Recept
 
     @Override
     public void save(Receptionist receptionist) {
-        receptionistList.put(receptionistList.size() + 1, receptionist);
+        receptionistList.put(receptionist.getId(), receptionist);
     }
 
     @Override

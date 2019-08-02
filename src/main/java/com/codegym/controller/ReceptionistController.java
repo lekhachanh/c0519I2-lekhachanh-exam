@@ -32,6 +32,7 @@ public class ReceptionistController {
 
     @PostMapping("/save")
     public ModelAndView saveReceptionist(@ModelAttribute("receptionist") Receptionist receptionist) {
+        receptionist.setId((int)(Math.random() * 10000));
         receptionistService.save(receptionist);
         ModelAndView modelAndView = new ModelAndView("/receptionist/create");
         modelAndView.addObject("receptionist", new Receptionist());

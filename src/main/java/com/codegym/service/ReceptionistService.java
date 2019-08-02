@@ -1,7 +1,5 @@
 package com.codegym.service;
 
-import com.codegym.model.Receptionist;
-
 import java.util.List;
 
 public interface ReceptionistService <Receptionist>{
