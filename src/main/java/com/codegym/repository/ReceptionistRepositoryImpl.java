@@ -10,7 +10,7 @@ import java.util.Map;
 public class ReceptionistRepositoryImpl implements ReceptionistRepository<Receptionist> {
     private static Map<Integer, Receptionist> receptionistList;
 
-     static {
+    static {
         receptionistList = new HashMap<>();
         receptionistList.put(1, new Receptionist(1, "Phan Văn Đức", 21, "Yên Thành, Nghệ An", "play football"));
         receptionistList.put(2, new Receptionist(2, "Phan Đình Tùng", 31, "Q3, Tp. Hồ Chí Minh", "sing"));
@@ -27,7 +27,7 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository<Recept
 
     @Override
     public void save(Receptionist receptionist) {
-        receptionistList.put(receptionistList.size()+1, receptionist);
+        receptionistList.put(receptionistList.size() + 1, receptionist);
     }
 
     @Override
@@ -46,10 +46,10 @@ public class ReceptionistRepositoryImpl implements ReceptionistRepository<Recept
     }
 
     @Override
-    public List<Receptionist> search(String word){
+    public List<Receptionist> search(String word) {
         List<Receptionist> filteredList = new ArrayList<>();
-        for (Receptionist receptionist: this.findAll()){
-            if(receptionist.getName().toLowerCase().contains(word.trim().toLowerCase())){
+        for (Receptionist receptionist : this.findAll()) {
+            if (receptionist.getName().toLowerCase().contains(word.trim().toLowerCase())) {
                 filteredList.add(receptionist);
             }
         }

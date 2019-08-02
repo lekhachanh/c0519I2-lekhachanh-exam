@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class ReceptionistServiceImpl implements ReceptionistService <Receptionist> {
+public class ReceptionistServiceImpl implements ReceptionistService<Receptionist> {
     @Autowired
-    private ReceptionistRepository <Receptionist> receptionistRepository;
+    private ReceptionistRepository<Receptionist> receptionistRepository;
+
     @Override
     public List<Receptionist> findAll() {
         return receptionistRepository.findAll();
@@ -28,13 +29,14 @@ public class ReceptionistServiceImpl implements ReceptionistService <Receptionis
     public void update(int id, Receptionist receptionist) {
         receptionistRepository.update(id, receptionist);
     }
+
     @Override
     public void remove(int id) {
         receptionistRepository.remove(id);
     }
 
     @Override
-    public List<Receptionist> search(String word){
+    public List<Receptionist> search(String word) {
         return receptionistRepository.search(word);
     }
 }
