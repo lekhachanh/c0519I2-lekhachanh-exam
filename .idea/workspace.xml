@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddd64ca5-dc01-440a-ba1b-af1b9a36cd84" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/receptionist/error-404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,10 +11,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codegym/controller/ReceptionistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/codegym/controller/ReceptionistController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/codegym/repository/ReceptionistRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/codegym/repository/ReceptionistRepositoryImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/receptionist-thymeleaf-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/receptionist-thymeleaf-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/codegym/controller/ReceptionistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/controller/ReceptionistController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/codegym/repository/ReceptionistRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codegym/repository/ReceptionistRepositoryImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +280,13 @@
       <workItem from="1564738174306" duration="1993000" />
       <workItem from="1564740196423" duration="2323000" />
       <workItem from="1564749639390" duration="1551000" />
-      <workItem from="1564751268731" duration="109000" />
+      <workItem from="1564751268731" duration="753000" />
+      <workItem from="1564912726493" duration="2069000" />
+      <workItem from="1564967677451" duration="23000" />
+      <workItem from="1564975821463" duration="15000" />
+      <workItem from="1564975864936" duration="37000" />
+      <workItem from="1565092775929" duration="18000" />
+      <workItem from="1565092817710" duration="15000" />
     </task>
     <servers />
   </component>

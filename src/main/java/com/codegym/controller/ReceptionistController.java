@@ -40,7 +40,7 @@ public class ReceptionistController {
     }
 
     @PostMapping("/save")
-    public ModelAndView saveReceptionist(ReceptionistForm receptionistForm) {
+    public ModelAndView saveReceptionist(@ModelAttribute("receptionistForm") ReceptionistForm receptionistForm) {
         MultipartFile multipartFile = receptionistForm.getAvatar();
         String fileName = multipartFile.getOriginalFilename();
         String fileUpload = env.getProperty("upload_file".toString());
@@ -50,7 +50,7 @@ public class ReceptionistController {
             ex.printStackTrace();
         }
         Receptionist receptionist = new Receptionist(receptionistForm.getId(), receptionistForm.getName(), receptionistForm.getAge(), receptionistForm.getAddress(), receptionistForm.getHobby(), fileName);
-        receptionist.setId((int)(Math.random()*100000));
+        receptionist.setId((int) (Math.random() * 100000));
         receptionistService.save(receptionist);
         ModelAndView modelAndView = new ModelAndView("/receptionist/create");
         modelAndView.addObject("message", "Created new receptionist succesfully!");
